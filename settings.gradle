@@ -1,0 +1,2 @@
+rootProject.name='niuke'
+include ':app', ':mvvmhabit'
