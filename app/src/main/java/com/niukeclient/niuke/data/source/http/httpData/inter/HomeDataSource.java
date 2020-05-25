@@ -1,4 +1,4 @@
-package com.niukeclient.niuke.data.source.http.httpData;
+package com.niukeclient.niuke.data.source.http.httpData.inter;
 
 import com.niukeclient.niuke.entity.DemoEntity;
 import com.niukeclient.niuke.entity.RoomInfo;

@@ -12,7 +12,7 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import me.goldze.mvvmhabit.BuildConfig;
+
 import me.goldze.mvvmhabit.http.cookie.CookieJarImpl;
 import me.goldze.mvvmhabit.http.cookie.store.PersistentCookieStore;
 import me.goldze.mvvmhabit.http.interceptor.BaseInterceptor;
@@ -39,8 +39,8 @@ public class RetrofitClient {
     //缓存时间
     private static final int CACHE_TIMEOUT = 10 * 1024 * 1024;
     //服务端根路径
-//    public static String baseUrl = "http://192.168.191.1:80/";
-    public static String baseUrl = "https://www.oschina.net/";
+    public static String baseUrl = "http://192.168.10.62:8090/";
+//    public static String baseUrl = "https://www.oschina.net/";
 
     private static Context mContext = Utils.getContext();
 
@@ -101,7 +101,6 @@ public class RetrofitClient {
                 .connectionPool(new ConnectionPool(8, 15, TimeUnit.SECONDS))
                 // 这里你可以根据自己的机型设置同时连接的个数和时间，我这里8个，和每个保持时间为10s
                 .build();
-
         retrofit = new Retrofit.Builder()
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())

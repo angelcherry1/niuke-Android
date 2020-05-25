@@ -1,7 +1,8 @@
-package com.niukeclient.niuke.data.source.http.httpData;
+package com.niukeclient.niuke.data.source.http.httpData.mpl;
 
 import android.util.Log;
 
+import com.niukeclient.niuke.data.source.http.httpData.inter.UserDataSource;
 import com.niukeclient.niuke.data.source.http.service.UserApiService;
 import com.niukeclient.niuke.entity.User;
 

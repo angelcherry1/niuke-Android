@@ -8,14 +8,14 @@ package com.niukeclient.niuke.entity;
 public class User {
     private int id;
     private String userName;
-    private String password;
+    private String passWord;
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
+                ", password='" + passWord + '\'' +
                 '}';
     }
 
@@ -35,11 +35,11 @@ public class User {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassWord(String password) {
+        this.passWord = passWord;
     }
 }

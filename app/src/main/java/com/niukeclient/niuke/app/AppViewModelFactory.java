@@ -8,6 +8,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.niukeclient.niuke.data.repository.DemoRepository;
 import com.niukeclient.niuke.data.repository.HomeRepository;
 import com.niukeclient.niuke.ui.viewModel.HomeViewModel;
 import com.niukeclient.niuke.ui.viewModel.UserViewModel;
@@ -19,14 +20,13 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     @SuppressLint("StaticFieldLeak")
     private static volatile AppViewModelFactory INSTANCE;
     private final Application mApplication;
-    private final HomeRepository mRepository;
-//    private final UserRepository uRepository;
+    private final DemoRepository mRepository;
 
-    public static AppViewModelFactory getInstance(Application application,HomeRepository mRepository) {
+    public static AppViewModelFactory getInstance(Application application) {
         if (INSTANCE == null) {
             synchronized (AppViewModelFactory.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new AppViewModelFactory(application, mRepository);
+                    INSTANCE = new AppViewModelFactory(application, Injection.provideDemoRepository());
                 }
             }
         }
@@ -38,21 +38,17 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
         INSTANCE = null;
     }
 
-    private AppViewModelFactory(Application application, HomeRepository mRepository) {
+    private AppViewModelFactory(Application application, DemoRepository repository) {
         this.mApplication = application;
-        this.mRepository = mRepository;
+        this.mRepository = repository;
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass.isAssignableFrom(HomeViewModel.class)) {
-            return (T) new HomeViewModel(mApplication);
-        }else if(modelClass.isAssignableFrom(UserViewModel.class)){
-//            return (T) new UserViewModel(mApplication, uRepository);
+            return (T) new HomeViewModel(mApplication, mRepository);
         }
-            throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
-
-
+        throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }
 }

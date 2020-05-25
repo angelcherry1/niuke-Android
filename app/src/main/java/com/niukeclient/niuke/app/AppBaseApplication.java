@@ -12,20 +12,7 @@ import me.goldze.mvvmhabit.utils.KLog;
  * @date:on 2020/5/21 0021
  * @Describe :xxxxx
  */
-public class CherryBaseApplication extends BaseApplication {
-
-    public static CherryBaseApplication mInstance;
-    public CherryBaseApplication() {
-        super();
-
-    }
-    public static synchronized CherryBaseApplication getInstance() {
-        return mInstance;
-    }
-
-    public static CherryBaseApplication getApplication() {
-        return mInstance;
-    }
+public class AppBaseApplication extends BaseApplication {
 
     @Override
     public void onCreate() {

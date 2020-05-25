@@ -2,13 +2,9 @@ package com.niukeclient.niuke.data.repository;
 
 import androidx.annotation.NonNull;
 
-import com.niukeclient.niuke.data.source.http.httpData.HomeDataSource;
-import com.niukeclient.niuke.data.source.local.LocalHomeDataSource;
+import com.niukeclient.niuke.data.source.http.httpData.inter.HomeDataSource;
+import com.niukeclient.niuke.data.source.local.inter.LocalHomeDataSource;
 import com.niukeclient.niuke.entity.DemoEntity;
-import com.niukeclient.niuke.entity.RoomInfo;
-
-import java.util.List;
-import java.util.Map;
 
 import io.reactivex.Observable;
 import me.goldze.mvvmhabit.base.BaseModel;

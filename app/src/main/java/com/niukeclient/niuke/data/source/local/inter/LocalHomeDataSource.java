@@ -1,4 +1,4 @@
-package com.niukeclient.niuke.data.source.local;
+package com.niukeclient.niuke.data.source.local.inter;
 
 /**
  * Created by goldze on 2019/3/26.

@@ -6,7 +6,7 @@ import io.reactivex.Observable;
 import me.goldze.mvvmhabit.base.BaseModel;
 import me.goldze.mvvmhabit.http.BaseResponse;
 
-import com.niukeclient.niuke.data.source.http.httpData.UserDataSource;
+import com.niukeclient.niuke.data.source.http.httpData.inter.UserDataSource;
 import com.niukeclient.niuke.entity.User;
 
 /**
