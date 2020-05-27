@@ -16,9 +16,9 @@ import me.goldze.mvvmhabit.utils.RxUtils;
 import me.goldze.mvvmhabit.utils.ToastUtils;
 
 public class UserViewModel extends BaseViewModel<UserRepository> {
-    public UserViewModel(@NonNull Application application,UserRepository userRepository) {
-        super(application,userRepository);
-        requestNetWork();
+    public UserViewModel(@NonNull Application application) {
+        super(application);
+//        requestNetWork();
     }
     public MutableLiveData<User> user;
 

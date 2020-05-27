@@ -31,6 +31,24 @@
             android:layout_height="wrap_content"
             android:text="用户数据获取"
             binding:onClickCommand="@{homeViewModel.getUser}" />
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:hint="输入用户名称"
+            android:text="@{homeViewModel.adduserName}"
+            />
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:hint="输入用户密码"
+            android:text="@{homeViewModel.adduserPass}"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="用户数据添加"
+            binding:onClickCommand="@{homeViewModel.btnAddUser}" />
     </LinearLayout>
 
 </layout>

@@ -21,4 +21,6 @@ public interface HomeDataSource {
     Observable<BaseResponse<DemoEntity>> demoPost(String catalog);
 
     Observable<BaseResponse<User>> getUser(int id);
+
+    Observable<BaseResponse<Object>> addUser(String userName,String passWord);
 }

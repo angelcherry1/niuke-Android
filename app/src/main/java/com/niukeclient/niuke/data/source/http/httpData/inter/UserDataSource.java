@@ -13,4 +13,9 @@ import me.goldze.mvvmhabit.http.BaseResponse;
 public interface UserDataSource {
 
     Observable<BaseResponse<User>> getUser(int id);
+
+    Observable<BaseResponse<User>> login(String userName,String passWord);
+
+    Observable<BaseResponse<Object>> registerUser(String userName,String passWord);
+
 }

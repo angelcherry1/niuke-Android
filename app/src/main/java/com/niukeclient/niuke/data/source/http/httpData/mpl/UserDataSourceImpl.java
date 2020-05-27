@@ -44,4 +44,14 @@ public class UserDataSourceImpl implements UserDataSource {
         return userApiService.getUser(id);
     }
 
+    @Override
+    public Observable<BaseResponse<User>> login(String userName, String passWord) {
+        return userApiService.login(userName,passWord);
+    }
+
+    @Override
+    public Observable<BaseResponse<Object>> registerUser(String userName, String passWord) {
+        return userApiService.registerUser(userName,passWord);
+    }
+
 }

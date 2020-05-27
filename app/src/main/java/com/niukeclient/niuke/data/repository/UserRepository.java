@@ -39,4 +39,15 @@ public class UserRepository extends BaseModel implements UserDataSource {
         Log.i("BaseResponse","获得的id是："+id);
         return userDataSource.getUser(id);
     }
+
+    @Override
+    public Observable<BaseResponse<User>> login(String userName, String passWord) {
+        return userDataSource.login(userName,passWord);
+    }
+
+    @Override
+    public Observable<BaseResponse<Object>> registerUser(String userName, String passWord) {
+        return null;
+    }
+
 }

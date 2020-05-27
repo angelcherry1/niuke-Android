@@ -14,28 +14,20 @@ import android.view.ViewGroup;
 
 import com.niukeclient.niuke.BR;
 import com.niukeclient.niuke.R;
-import com.niukeclient.niuke.app.AppViewModelFactory;
-import com.niukeclient.niuke.app.Injection;
-import com.niukeclient.niuke.data.source.http.service.HomeApiService;
 import com.niukeclient.niuke.databinding.HomeFragmentBinding;
 import com.niukeclient.niuke.ui.viewModel.HomeViewModel;
-import com.niukeclient.niuke.utils.RetrofitClient;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
 import me.goldze.mvvmhabit.base.ViewModelFactory;
 
 public class HomeFragment extends BaseFragment<HomeFragmentBinding,HomeViewModel>{
 
-    private HomeViewModel mViewModel;
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
-    }
 
     @Override
     public void initParam() {
         super.initParam();
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+//        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
     }
 
     @Override

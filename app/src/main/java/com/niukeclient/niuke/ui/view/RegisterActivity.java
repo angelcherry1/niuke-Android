@@ -11,11 +11,11 @@ import androidx.lifecycle.ViewModelProviders;
 import com.niukeclient.niuke.BR;
 import com.niukeclient.niuke.R;
 import com.niukeclient.niuke.databinding.ActivityLoginBinding;
-import com.niukeclient.niuke.ui.viewModel.HomeViewModel;
+import com.niukeclient.niuke.databinding.ActivityRegisterBinding;
 import com.niukeclient.niuke.ui.viewModel.LoginViewModel;
+import com.niukeclient.niuke.ui.viewModel.RegisterViewModel;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
-import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.base.ViewModelFactory;
 
 /**
@@ -23,22 +23,22 @@ import me.goldze.mvvmhabit.base.ViewModelFactory;
  * @date:On 2020/5/25
  * @Desriptiong: 23231
  */
-public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewModel> {
+public class RegisterActivity extends BaseActivity<ActivityRegisterBinding, RegisterViewModel> {
     @Override
     public int initContentView(Bundle savedInstanceState) {
-        return R.layout.activity_login;
+        return R.layout.activity_register;
     }
 
     @Override
     public int initVariableId() {
-        return BR.loginViewModel;
+        return BR.registerViewModel;
     }
 
     @Override
-    public LoginViewModel initViewModel() {
+    public RegisterViewModel initViewModel() {
         //使用自定义的ViewModelFactory来创建ViewModel，如果不重写该方法，则默认会调用NetWorkViewModel(@NonNull Application application)构造方法
         ViewModelFactory factory=ViewModelFactory.getInstance(getApplication());
-        return ViewModelProviders.of(this,factory).get(LoginViewModel.class);
+        return ViewModelProviders.of(this,factory).get(RegisterViewModel.class);
     }
 
     @Override

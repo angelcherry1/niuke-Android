@@ -3,8 +3,8 @@ package com.niukeclient.niuke.data.repository;
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
-
 import com.niukeclient.niuke.data.source.http.httpData.inter.HttpDataSource;
+import com.niukeclient.niuke.data.source.http.httpData.inter.UserDataSource;
 import com.niukeclient.niuke.data.source.local.inter.LocalDataSource;
 import com.niukeclient.niuke.entity.DemoEntity;
 import com.niukeclient.niuke.entity.User;
@@ -17,30 +17,30 @@ import me.goldze.mvvmhabit.http.BaseResponse;
  * MVVM的Model层，统一模块的数据仓库，包含网络数据和本地数据（一个应用可以有多个Repositor）
  * Created by goldze on 2019/3/26.
  */
-public class DemoRepository extends BaseModel implements HttpDataSource, LocalDataSource {
-    private volatile static DemoRepository INSTANCE = null;
-    private final HttpDataSource mHttpDataSource;
+public class LoginRepository extends BaseModel implements UserDataSource, LocalDataSource {
+    private volatile static LoginRepository INSTANCE = null;
+    private final UserDataSource userDataSource;
 
     private final LocalDataSource mLocalDataSource;
 
-    private DemoRepository(@NonNull HttpDataSource httpDataSource,
-                           @NonNull LocalDataSource localDataSource) {
-        this.mHttpDataSource = httpDataSource;
+    private LoginRepository(@NonNull UserDataSource userDataSource,
+                            @NonNull LocalDataSource localDataSource) {
+        this.userDataSource = userDataSource;
         this.mLocalDataSource = localDataSource;
     }
 
-    public static DemoRepository getInstance(HttpDataSource httpDataSource,
-                                             LocalDataSource localDataSource) {
+    public static LoginRepository getInstance(UserDataSource userDataSource,
+                                              LocalDataSource localDataSource) {
         if (INSTANCE == null) {
-            synchronized (DemoRepository.class) {
+            synchronized (LoginRepository.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new DemoRepository(httpDataSource, localDataSource);
+                    INSTANCE = new LoginRepository(userDataSource, localDataSource);
                 }
             }
         }
         return INSTANCE;
     }
-
+    //网络数据处理
     @VisibleForTesting
     public static void destroyInstance() {
         INSTANCE = null;
@@ -48,33 +48,25 @@ public class DemoRepository extends BaseModel implements HttpDataSource, LocalDa
 
 
     @Override
-    public Observable<Object> login() {
-        return mHttpDataSource.login();
-    }
-
-    @Override
-    public Observable<DemoEntity> loadMore() {
-        return mHttpDataSource.loadMore();
-    }
-
-    @Override
-    public Observable<BaseResponse<DemoEntity>> demoGet() {
-        return mHttpDataSource.demoGet();
-    }
-
-    @Override
-    public Observable<BaseResponse<DemoEntity>> demoPost(String catalog) {
-        return mHttpDataSource.demoPost(catalog);
-    }
-
-    @Override
     public Observable<BaseResponse<User>> getUser(int id) {
-        return mHttpDataSource.getUser(id);
+        return userDataSource.getUser(id);
     }
 
+    @Override
+    public Observable<BaseResponse<User>> login(String userName, String passWord) {
+        return userDataSource.login(userName,passWord);
+    }
+
+    @Override
+    public Observable<BaseResponse<Object>> registerUser(String userName, String passWord) {
+        return userDataSource.registerUser(userName,passWord);
+    }
+
+
+    //以下是本地数据处理
     @Override
     public void saveUserId(String id) {
-
+        mLocalDataSource.saveUserId(id);
     }
 
     @Override
@@ -99,6 +91,8 @@ public class DemoRepository extends BaseModel implements HttpDataSource, LocalDa
 
     @Override
     public String getUserId() {
-        return null;
+        return mLocalDataSource.getUserId();
     }
+
+
 }

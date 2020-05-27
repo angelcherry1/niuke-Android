@@ -31,6 +31,11 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
+    public void saveUserId(String id) {
+        SPUtils.getInstance().put("id", id);
+    }
+
+    @Override
     public void saveUserName(String userName) {
         SPUtils.getInstance().put("UserName", userName);
     }
@@ -49,4 +54,10 @@ public class LocalDataSourceImpl implements LocalDataSource {
     public String getPassword() {
         return SPUtils.getInstance().getString("password");
     }
+
+    @Override
+    public String getUserId() {
+        return SPUtils.getInstance().getString("id");
+    }
+
 }

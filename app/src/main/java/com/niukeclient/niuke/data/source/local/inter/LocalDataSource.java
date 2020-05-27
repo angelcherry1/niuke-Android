@@ -5,6 +5,10 @@ package com.niukeclient.niuke.data.source.local.inter;
  */
 public interface LocalDataSource {
     /**
+     * 保存用户id
+     */
+    void saveUserId(String id);
+    /**
      * 保存用户名
      */
     void saveUserName(String userName);
@@ -24,4 +28,8 @@ public interface LocalDataSource {
      * 获取用户密码
      */
     String getPassword();
+    /**
+     * 获取用户id
+     */
+    String getUserId();
 }

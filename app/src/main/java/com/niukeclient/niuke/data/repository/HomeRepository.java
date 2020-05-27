@@ -74,4 +74,10 @@ public class HomeRepository extends BaseModel implements HomeDataSource, LocalHo
     public Observable<BaseResponse<User>> getUser(int id) {
         return homeDataSource.getUser(id);
     }
+
+    @Override
+    public Observable<BaseResponse<Object>> addUser(String userName, String passWord) {
+        return homeDataSource.addUser(userName,passWord);
+    }
+
 }

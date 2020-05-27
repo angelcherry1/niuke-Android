@@ -41,4 +41,9 @@ public interface HomeApiService {
 
     @GET("api/home/getUser")
     Observable<BaseResponse<User>> getUser(@Query("id")int id);
+
+    @FormUrlEncoded
+    @POST("api/home/addUse")
+    Observable<BaseResponse<Object>> addUser(@Query("userName") String userName,@Query("passWord") String passWord);
+
 }

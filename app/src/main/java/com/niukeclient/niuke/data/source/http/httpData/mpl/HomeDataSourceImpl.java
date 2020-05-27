@@ -49,4 +49,9 @@ public class HomeDataSourceImpl implements HomeDataSource {
     public Observable<BaseResponse<User>> getUser(int id) {
         return apiService.getUser(id);
     }
+
+    @Override
+    public Observable<BaseResponse<Object>> addUser(String userName, String passWord) {
+        return apiService.addUser(userName,passWord);
+    }
 }

@@ -3,6 +3,7 @@ package com.niukeclient.niuke.app;
 
 import com.niukeclient.niuke.data.repository.DemoRepository;
 import com.niukeclient.niuke.data.repository.HomeRepository;
+import com.niukeclient.niuke.data.repository.LoginRepository;
 import com.niukeclient.niuke.data.repository.UserRepository;
 import com.niukeclient.niuke.data.source.http.httpData.inter.HomeDataSource;
 import com.niukeclient.niuke.data.source.http.httpData.inter.HttpDataSource;
@@ -54,6 +55,17 @@ public class Injection {
         LocalDataSource localDataSource = LocalDataSourceImpl.getInstance();
         //两条分支组成一个数据仓库
         return DemoRepository.getInstance(httpDataSource, localDataSource);
+    }
+
+    public static LoginRepository provideLoginRepository()  {
+        //网络API服务
+        UserApiService apiService = RetrofitClient.getInstance().create(UserApiService.class);
+        //网络数据源
+        UserDataSource userDataSource = UserDataSourceImpl.getInstance(apiService);
+        //本地数据源
+        LocalDataSource localDataSource = LocalDataSourceImpl.getInstance();
+        //两条分支组成一个数据仓库
+        return LoginRepository.getInstance(userDataSource, localDataSource);
     }
 
     public static void  onDestroy(){

@@ -20,7 +20,6 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".ui.view.MainActivity">
-
         </activity>
         <activity android:name=".ui.view.LoginActivity">
             <intent-filter>
@@ -30,6 +29,7 @@
             </intent-filter>
 
         </activity>
+        <activity android:name=".ui.view.RegisterActivity"></activity>
     </application>
 
 </manifest>
