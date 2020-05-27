@@ -1,5 +1,6 @@
 package com.niukeclient.niuke.data.source.http.service;
 
+import com.niukeclient.niuke.base.BaseApiService;
 import com.niukeclient.niuke.entity.User;
 
 import io.reactivex.Observable;
@@ -12,8 +13,7 @@ import retrofit2.http.Query;
  * @date:On 2020/5/24
  * @Desriptiong: 23231
  */
-public interface UserApiService {
-
+public interface UserApiService{
     @GET("getUser")
     Observable<BaseResponse<User>> getUser(@Query("id") int id);
 }

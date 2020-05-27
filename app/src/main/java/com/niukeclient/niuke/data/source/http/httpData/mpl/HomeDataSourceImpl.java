@@ -3,6 +3,7 @@ package com.niukeclient.niuke.data.source.http.httpData.mpl;
 import com.niukeclient.niuke.data.source.http.httpData.inter.HomeDataSource;
 import com.niukeclient.niuke.data.source.http.service.HomeApiService;
 import com.niukeclient.niuke.entity.DemoEntity;
+import com.niukeclient.niuke.entity.User;
 
 import io.reactivex.Observable;
 import me.goldze.mvvmhabit.http.BaseResponse;
@@ -42,5 +43,10 @@ public class HomeDataSourceImpl implements HomeDataSource {
     @Override
     public Observable<BaseResponse<DemoEntity>> demoPost(String catalog) {
         return apiService.demoPost(catalog);
+    }
+
+    @Override
+    public Observable<BaseResponse<User>> getUser(int id) {
+        return apiService.getUser(id);
     }
 }

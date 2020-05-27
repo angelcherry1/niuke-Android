@@ -4,10 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.ObservableArrayList;
-import androidx.databinding.ObservableList;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 
 import com.niukeclient.niuke.app.Injection;
@@ -18,28 +15,22 @@ import com.niukeclient.niuke.entity.User;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import me.goldze.mvvmhabit.BR;
 import me.goldze.mvvmhabit.base.BaseViewModel;
-import me.goldze.mvvmhabit.base.MultiItemViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
-import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 import me.goldze.mvvmhabit.http.BaseResponse;
 import me.goldze.mvvmhabit.utils.RxUtils;
-import me.goldze.mvvmhabit.utils.ToastUtils;
-import me.tatarka.bindingcollectionadapter2.ItemBinding;
-import me.tatarka.bindingcollectionadapter2.OnItemBind;
 
-public class HomeViewModel extends BaseViewModel<DemoRepository> {
+
+public class HomeViewModel extends BaseViewModel<HomeRepository> {
     //    private static final String MultiRecycleType_Head = "head";
 //    private static final String MultiRecycleType_Left = "left";
 //    private static final String MultiRecycleType_Right = "right";
-    private DemoRepository demoRepository;
+    private HomeRepository homeRepository;
     public MutableLiveData<User> user = new MutableLiveData<>();
 
-    public HomeViewModel(@NonNull Application application, DemoRepository demoRepository) {
-        super(application, demoRepository);
+    public HomeViewModel(@NonNull Application application) {
+        super(application,Injection.provideHomeRepository());
 
     }
 
@@ -78,5 +69,11 @@ public class HomeViewModel extends BaseViewModel<DemoRepository> {
                         Log.i("测试","onComplete");
                     }
                 });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
     }
 }

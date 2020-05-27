@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import com.niukeclient.niuke.data.source.http.httpData.inter.HomeDataSource;
 import com.niukeclient.niuke.data.source.local.inter.LocalHomeDataSource;
 import com.niukeclient.niuke.entity.DemoEntity;
+import com.niukeclient.niuke.entity.User;
 
 import io.reactivex.Observable;
 import me.goldze.mvvmhabit.base.BaseModel;
@@ -18,6 +19,7 @@ import me.goldze.mvvmhabit.http.BaseResponse;
 public class HomeRepository extends BaseModel implements HomeDataSource, LocalHomeDataSource {
     private volatile static HomeRepository INSTANCE = null;
     private final HomeDataSource homeDataSource;
+
     private final LocalHomeDataSource localHomeDataSource;
 
 
@@ -66,5 +68,10 @@ public class HomeRepository extends BaseModel implements HomeDataSource, LocalHo
     @Override
     public Observable<BaseResponse<DemoEntity>> demoPost(String catalog) {
         return homeDataSource.demoPost(catalog);
+    }
+
+    @Override
+    public Observable<BaseResponse<User>> getUser(int id) {
+        return homeDataSource.getUser(id);
     }
 }

@@ -13,6 +13,9 @@ import com.niukeclient.niuke.data.repository.HomeRepository;
 import com.niukeclient.niuke.ui.viewModel.HomeViewModel;
 import com.niukeclient.niuke.ui.viewModel.UserViewModel;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * Created by goldze on 2019/3/26.
  */
@@ -20,13 +23,13 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     @SuppressLint("StaticFieldLeak")
     private static volatile AppViewModelFactory INSTANCE;
     private final Application mApplication;
-    private final DemoRepository mRepository;
+//    private final DemoRepository mRepository;
 
     public static AppViewModelFactory getInstance(Application application) {
         if (INSTANCE == null) {
             synchronized (AppViewModelFactory.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new AppViewModelFactory(application, Injection.provideDemoRepository());
+                    INSTANCE = new AppViewModelFactory(application);
                 }
             }
         }
@@ -38,17 +41,38 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
         INSTANCE = null;
     }
 
-    private AppViewModelFactory(Application application, DemoRepository repository) {
+    private AppViewModelFactory(Application application) {
         this.mApplication = application;
-        this.mRepository = repository;
+
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass.isAssignableFrom(HomeViewModel.class)) {
-            return (T) new HomeViewModel(mApplication, mRepository);
+            return (T) new HomeViewModel(mApplication);
+        }//反射动态实例化ViewModel
+        try {
+            String className = modelClass.getCanonicalName();
+            Class<?> classViewModel = Class.forName(className);
+            Constructor<?> cons = classViewModel.getConstructor(Application.class);
+            ViewModel viewModel = (ViewModel) cons.newInstance(mApplication);
+            return (T) viewModel;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
         }
-        throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }
 }

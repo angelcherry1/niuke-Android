@@ -2,6 +2,7 @@ package com.niukeclient.niuke.data.source.http.httpData.inter;
 
 import com.niukeclient.niuke.entity.DemoEntity;
 import com.niukeclient.niuke.entity.RoomInfo;
+import com.niukeclient.niuke.entity.User;
 
 import java.util.List;
 import java.util.Map;
@@ -19,4 +20,5 @@ public interface HomeDataSource {
 
     Observable<BaseResponse<DemoEntity>> demoPost(String catalog);
 
+    Observable<BaseResponse<User>> getUser(int id);
 }

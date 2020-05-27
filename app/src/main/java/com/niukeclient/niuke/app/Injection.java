@@ -45,7 +45,7 @@ public class Injection {
         return UserRepository.getInstance(userDataSource);
     }
 
-    public static DemoRepository provideDemoRepository() {
+    public static  DemoRepository provideDemoRepository()  {
         //网络API服务
         DemoApiService apiService = RetrofitClient.getInstance().create(DemoApiService.class);
         //网络数据源
@@ -54,5 +54,9 @@ public class Injection {
         LocalDataSource localDataSource = LocalDataSourceImpl.getInstance();
         //两条分支组成一个数据仓库
         return DemoRepository.getInstance(httpDataSource, localDataSource);
+    }
+
+    public static void  onDestroy(){
+
     }
 }

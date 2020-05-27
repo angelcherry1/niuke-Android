@@ -15,12 +15,14 @@ import android.view.ViewGroup;
 import com.niukeclient.niuke.BR;
 import com.niukeclient.niuke.R;
 import com.niukeclient.niuke.app.AppViewModelFactory;
+import com.niukeclient.niuke.app.Injection;
 import com.niukeclient.niuke.data.source.http.service.HomeApiService;
 import com.niukeclient.niuke.databinding.HomeFragmentBinding;
 import com.niukeclient.niuke.ui.viewModel.HomeViewModel;
 import com.niukeclient.niuke.utils.RetrofitClient;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
+import me.goldze.mvvmhabit.base.ViewModelFactory;
 
 public class HomeFragment extends BaseFragment<HomeFragmentBinding,HomeViewModel>{
 
@@ -49,7 +51,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding,HomeViewModel
     @Override
     public HomeViewModel initViewModel() {
 //使用自定义的ViewModelFactory来创建ViewModel，如果不重写该方法，则默认会调用NetWorkViewModel(@NonNull Application application)构造方法
-        AppViewModelFactory factory = AppViewModelFactory.getInstance(getActivity().getApplication());
+        ViewModelFactory factory=ViewModelFactory.getInstance(getActivity().getApplication());
+//        AppViewModelFactory factory = AppViewModelFactory.getInstance(getActivity().getApplication());
         return  ViewModelProviders.of(this,factory).get(HomeViewModel.class);
     }
 

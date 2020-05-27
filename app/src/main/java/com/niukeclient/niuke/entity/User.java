@@ -1,5 +1,7 @@
 package com.niukeclient.niuke.entity;
 
+import androidx.databinding.Bindable;
+
 /**
  * @author:lixiaobiao
  * @date:On 2020/5/24
@@ -26,6 +28,7 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
+
 
     public String getUserName() {
         return userName;

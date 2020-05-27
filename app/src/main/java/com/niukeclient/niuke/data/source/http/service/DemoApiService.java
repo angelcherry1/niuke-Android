@@ -1,5 +1,6 @@
 package com.niukeclient.niuke.data.source.http.service;
 
+import com.niukeclient.niuke.base.BaseApiService;
 import com.niukeclient.niuke.entity.DemoEntity;
 import com.niukeclient.niuke.entity.User;
 
@@ -15,7 +16,7 @@ import retrofit2.http.Query;
  * Created by goldze on 2017/6/15.
  */
 
-public interface DemoApiService {
+public interface DemoApiService  {
     @GET("action/apiv2/banner?catalog=1")
     Observable<BaseResponse<DemoEntity>> demoGet();
 
