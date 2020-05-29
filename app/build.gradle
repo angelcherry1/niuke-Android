@@ -44,6 +44,8 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:support-v4:26.1.0'
 
+    implementation 'com.youth.banner:banner:1.4.9'  //最新版本
+
     //图片框架
     //不能升级到1.8，会出现错误
     implementation 'com.facebook.fresco:fresco:1.7.1'

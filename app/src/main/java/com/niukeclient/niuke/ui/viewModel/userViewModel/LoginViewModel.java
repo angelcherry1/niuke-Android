@@ -1,4 +1,4 @@
-package com.niukeclient.niuke.ui.viewModel;
+package com.niukeclient.niuke.ui.viewModel.userViewModel;
 
 import android.app.Application;
 import android.view.View;
@@ -15,6 +15,7 @@ import com.niukeclient.niuke.entity.User;
 import com.niukeclient.niuke.ui.view.MainActivity;
 import com.niukeclient.niuke.ui.view.RegisterActivity;
 
+import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import me.goldze.mvvmhabit.base.BaseViewModel;
@@ -51,6 +52,16 @@ public class LoginViewModel extends BaseViewModel<LoginRepository> {
         //从本地获取数据
         userName.set(model.getUserName());
         passWord.set(model.getPassword());
+
+    }
+
+    @Override
+    public void onCreate() {
+        //之前登录有效
+        if(!model.getUserId().isEmpty()){
+            startActivity(MainActivity.class);
+        }
+
     }
 
     //用户注册按钮的点击事件

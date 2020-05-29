@@ -26,5 +26,5 @@ public interface UserApiService{
 
     @FormUrlEncoded
     @POST("api/home/addUser")
-    Observable<BaseResponse<Object>> registerUser(@Query("userName") String userName,@Query("passWord") String passWord);
+    Observable<BaseResponse<Object>> registerUser(@Field("userName") String userName,@Field("passWord") String passWord);
 }

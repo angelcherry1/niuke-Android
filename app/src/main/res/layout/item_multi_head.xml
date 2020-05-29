@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.niukeclient.niuke.ui.viewModel.homeViewModel.MultiRecycleHeadViewModel" />
+
+        <variable
+            name="viewModelHeader"
+            type="com.niukeclient.niuke.ui.viewModel.homeViewModel.MultiRecycleHeadViewModel" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:binding="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="?android:selectableItemBackground"
+        android:gravity="center"
+        android:orientation="vertical"
+        binding:onClickCommand="@{viewModelHeader.itemClick}">
+<!--        <com.youth.banner.Banner-->
+<!--            android:id="@+id/home_banner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="150dp"-->
+<!--            android:src="@{viewModelHeader.img}"-->
+<!--            >-->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@{viewModelHeader.drawableImg}"
+            binding:url="@{viewModelHeader.oburl}"
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="我是头布局"
+                android:textColor="@color/textColor"
+                android:textSize="18sp" />
+
+<!--        </com.youth.banner.Banner>-->
+
+
+    </LinearLayout>
+</layout>

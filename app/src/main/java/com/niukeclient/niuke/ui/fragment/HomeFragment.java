@@ -3,22 +3,22 @@ package com.niukeclient.niuke.ui.fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.niukeclient.niuke.BR;
 import com.niukeclient.niuke.R;
 import com.niukeclient.niuke.databinding.HomeFragmentBinding;
-import com.niukeclient.niuke.ui.viewModel.HomeViewModel;
+import com.niukeclient.niuke.ui.viewModel.homeViewModel.HomeViewModel;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
+import me.goldze.mvvmhabit.base.MultiItemViewModel;
 import me.goldze.mvvmhabit.base.ViewModelFactory;
+import me.tatarka.bindingcollectionadapter2.BindingRecyclerViewAdapter;
 
 public class HomeFragment extends BaseFragment<HomeFragmentBinding,HomeViewModel>{
 
@@ -51,9 +51,10 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding,HomeViewModel
     @SuppressLint("ResourceType")
     @Override
     public void initData() {
-//
-//    @Override
-//    public void onBannerItemClick(BGABanner banner, SimpleDraweeView itemView, String model, int position) {        binding.setHomeAdapter(new BindingRecyclerViewAdapter());
+        //给RecyclerView添加Adpter，请使用自定义的Adapter继承BindingRecyclerViewAdapter，重写onBindBinding方法，里面有你要的Item对应的binding对象。
+        // Adapter属于View层的东西, 不建议定义到ViewModel中绑定，以免内存泄漏
+        binding.setAdapter(new BindingRecyclerViewAdapter<MultiItemViewModel>());
+
     }
 
     }

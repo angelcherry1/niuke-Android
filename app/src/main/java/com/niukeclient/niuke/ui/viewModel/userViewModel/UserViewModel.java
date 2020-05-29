@@ -1,4 +1,4 @@
-package com.niukeclient.niuke.ui.viewModel;
+package com.niukeclient.niuke.ui.viewModel.userViewModel;
 
 import android.annotation.SuppressLint;
 import android.app.Application;

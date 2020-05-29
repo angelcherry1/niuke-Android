@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.niukeclient.niuke.BR;
 import com.niukeclient.niuke.R;
 import com.niukeclient.niuke.databinding.UserFragmentBinding;
-import com.niukeclient.niuke.ui.viewModel.UserViewModel;
+import com.niukeclient.niuke.ui.viewModel.userViewModel.UserViewModel;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
 

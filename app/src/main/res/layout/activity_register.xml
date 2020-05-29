@@ -5,7 +5,7 @@
     <data>
         <variable
             name="registerViewModel"
-            type="com.niukeclient.niuke.ui.viewModel.RegisterViewModel" />
+            type="com.niukeclient.niuke.ui.viewModel.userViewModel.RegisterViewModel" />
     </data>
 
     <RelativeLayout

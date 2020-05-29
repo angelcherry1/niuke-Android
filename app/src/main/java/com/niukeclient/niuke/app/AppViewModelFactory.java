@@ -8,10 +8,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.niukeclient.niuke.data.repository.DemoRepository;
-import com.niukeclient.niuke.data.repository.HomeRepository;
-import com.niukeclient.niuke.ui.viewModel.HomeViewModel;
-import com.niukeclient.niuke.ui.viewModel.UserViewModel;
+import com.niukeclient.niuke.ui.viewModel.homeViewModel.HomeViewModel;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

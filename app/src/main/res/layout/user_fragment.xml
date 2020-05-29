@@ -5,7 +5,7 @@
     <data>
         <variable
             name="userViewModel"
-            type="com.niukeclient.niuke.ui.viewModel.UserViewModel" />
+            type="com.niukeclient.niuke.ui.viewModel.userViewModel.UserViewModel" />
     </data>
 
     <FrameLayout

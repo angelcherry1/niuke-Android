@@ -1,4 +1,4 @@
-package com.niukeclient.niuke.ui.viewModel;
+package com.niukeclient.niuke.ui.viewModel.classilyViewModel;
 
 import android.app.Application;
 

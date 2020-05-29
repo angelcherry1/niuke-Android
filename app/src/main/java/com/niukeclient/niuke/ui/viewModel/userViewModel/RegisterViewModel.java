@@ -1,4 +1,4 @@
-package com.niukeclient.niuke.ui.viewModel;
+package com.niukeclient.niuke.ui.viewModel.userViewModel;
 
 import android.app.Application;
 import android.util.Log;
@@ -106,40 +106,21 @@ public class RegisterViewModel extends BaseViewModel<LoginRepository> {
     private void register() {
         if (passWord.get().equals(rePassWord.get())) {
             ToastUtils.showLong("我执行行了注册的任务:" + userName.get() + "  " + passWord.get());
-            addSubscribe(model.registerUser(userName.get(), passWord.get())
+            model.registerUser(userName.get(), passWord.get())
                     .compose(RxUtils.schedulersTransformer()) //线程调度
-                    .doOnSubscribe(new Consumer<Disposable>() {
+                    .subscribe(new Consumer<BaseResponse<Object>>() {
                         @Override
-                        public void accept(Disposable disposable) throws Exception {
-                            showDialog();
-                        }
-                    })
-                    .subscribe(new Observer<BaseResponse<Object>>() {
-
-                        @Override
-                        public void onSubscribe(Disposable d) {
-                            Log.i("测试","onSubscribe");
-                        }
-
-                        @Override
-                        public void onNext(BaseResponse<Object> userBaseResponse) {
-                            if(userBaseResponse.getCode()==1){
+                        public void accept(BaseResponse<Object> baseResponse) throws Exception {
+                            if(baseResponse.getCode()==1){
                                 ToastUtils.showShort("注册成功！");
+                                finish();
+                            }else {
+                                ToastUtils.showShort("注册失败！"+baseResponse.getMessage());
                             }
-                            Log.i("测试","onNext");
-                        }
 
-                        @Override
-                        public void onError(Throwable e) {
-                            Log.i("测试","onError"+e.toString());
-                        }
-
-                        @Override
-                        public void onComplete() {
-                            Log.i("测试","onComplete");
                         }
                     });
-        }else {
+        } else {
             ToastUtils.showShort("两次密码不一致");
         }
 

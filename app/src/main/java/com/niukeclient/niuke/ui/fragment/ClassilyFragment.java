@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.niukeclient.niuke.BR;
 import com.niukeclient.niuke.R;
 import com.niukeclient.niuke.databinding.ClassilyFragmentBinding;
-import com.niukeclient.niuke.ui.viewModel.ClassilyViewModel;
+import com.niukeclient.niuke.ui.viewModel.classilyViewModel.ClassilyViewModel;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
 

@@ -10,10 +10,8 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.niukeclient.niuke.BR;
 import com.niukeclient.niuke.R;
-import com.niukeclient.niuke.databinding.ActivityLoginBinding;
 import com.niukeclient.niuke.databinding.ActivityRegisterBinding;
-import com.niukeclient.niuke.ui.viewModel.LoginViewModel;
-import com.niukeclient.niuke.ui.viewModel.RegisterViewModel;
+import com.niukeclient.niuke.ui.viewModel.userViewModel.RegisterViewModel;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
 import me.goldze.mvvmhabit.base.ViewModelFactory;
